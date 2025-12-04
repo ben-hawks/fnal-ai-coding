@@ -1,0 +1,936 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://ben-hawks.github.io/fnal-ai-coding/IDE%20Plugins/Cline/">
+      
+      
+        <link rel="prev" href="../../Other%20Coding%20Tools/">
+      
+      
+        <link rel="next" href="../Github%20Copilot/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Cline - FNAL AI Coding</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuring-cline" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="FNAL AI Coding" class="md-header__button md-logo" aria-label="FNAL AI Coding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FNAL AI Coding
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cline
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="pink" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FNAL AI Coding" class="md-nav__button md-logo" aria-label="FNAL AI Coding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    FNAL AI Coding
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using AI Tools to Code at the lab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other%20Coding%20Tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Other Coding Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IDE Plugins
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    IDE Plugins
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cline
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-cline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring Cline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-cline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using Cline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Github%20Copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Github Copilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IDEs%20and%20IDE%20Plugins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IDEs and IDE Plugins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kilo%20Code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kilo Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Models/Cloud%20Models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloud Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Models/Fermilab%20Hosted%20Models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fermilab Hosted Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool Calling
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tool Calling
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tool%20Calling/MCP%20Servers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Servers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-cline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring Cline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-cline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using Cline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Cline</h1>
+
+<ul>
+<li><a href="https://docs.cline.bot/introduction/welcome">Cline</a> - <ul>
+<li><a href="https://plugins.jetbrains.com/plugin/28247-cline">Jetbrains Plugin</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev">VSCode Plugin</a></li>
+<li><a href="https://docs.cline.bot/cline-cli/overview">CLI</a> (I have not used this myself, so ymmv and you'll have to figure out how to configure it, though I imagine a lot of settings will be similar to what I've put below)</li>
+</ul>
+</li>
+</ul>
+<p>Note that it'll ask you to login when you first install the plugin. This is optional and you can skip it by pressing "Configure API Keys" (or something similar, I forget exactly what the button says)</p>
+<h2 id="configuring-cline">Configuring Cline<a class="headerlink" href="#configuring-cline" title="Permanent link">&para;</a></h2>
+<p><strong><em>When configuring Cline, use the following settings:</em></strong> Under "Settings (Cog wheel in the upper right corner of the side panel that pops open) -&gt; API Configuration"</p>
+<p>Qwen3 Coder - Follow settings from <a href="../../Models/Fermilab%20Hosted%20Models/">Fermilab Hosted Models</a> for API access, additionally: 
+ * OpenAI compatible API Key: <strong>MUST BE SET TO ANY RANDOM TEXT</strong> (plugin requires it to be set, but we don't use api keys on this endpoint)
+- Request Timeout (ms): <code>60000</code> - Usually wont take this long for responses, but the ollama endpoint will take a bit to "warm up" when you start using it most of the time, or if it's unloading/loading the model. Once it's warmed up the response time is generally pretty reasonable.</p>
+<p>Alternatively, if you want to use a larger model that's not specifically tuned for coding:</p>
+<p>GPT OSS 120b - Follow settings from <a href="../../Models/Fermilab%20Hosted%20Models/">Fermilab Hosted Models</a> for API access, additionally: </p>
+<ul>
+<li>OpenAI compatible API Key: <strong>MUST BE SET TO ANY RANDOM TEXT</strong> (plugin requires it to be set, but we don't use api keys on this endpoint)</li>
+<li>Under "Model Configuration"<ul>
+<li>Supports Images: Unchecked/Disabled - Not supported by gpt-oss:120b afaik</li>
+<li>Context Window Size: <code>128000</code> - Max for gpt-oss:120b</li>
+<li>Max Output Tokens: <code>-1</code></li>
+<li>Temperature: <code>0</code> (Not relevant afaik)</li>
+</ul>
+</li>
+</ul>
+<p>Under "Features" Set the following: (a lot of these might be the default settings)</p>
+<ul>
+<li>Enable Checkpoints: Checked/Enabled</li>
+<li>Enable MCP Marketplace: Checked/Enabled (Optional, but can make things easier down the road. Dont worry about MCPs at this point, though)</li>
+<li>MCP Display Mode: <code>Plain Text</code></li>
+<li>OpenAI Reasoning Effort (relevant if using <code>gpt-oss:120b</code> only): Medium (Recommended, you can play with this if you want. Lower reasoning is faster but less accurate/analytical, higher is slower but more accurate/analytical most of the time)</li>
+<li>Enable Scrict Plan Mode: Checked/Enabled</li>
+<li>Enable Focus Chain: Checked/Enabled</li>
+</ul>
+<p>If you're doing work where it's relevant, you can configure Cline to use a browser automatically under the "Browser" tab, but I have not played with this. The settings seem pretty self explanatory, though.Under "Terminal" Set the following (a lot of these might also be the default settings)  </p>
+<ul>
+<li>Default Terminal Profile: <code>Bash</code> if on Mac/Linux (probably) and <code>Powershell</code> if on windows. If you are using WSL as your terminal in your IDE, you can also set it to <code>WSL Bash</code> , but make sure the terminal integration itself is configured properly or things will fail.</li>
+<li>Shell Integration Timeout: <code>4</code> is a good default, try increasing if you're on a remote connection and are running into issues</li>
+<li>Enable Aggressive Terminal Reuse: Checked/Enabled - Disable if you're running into issues with the commands Cline runs, though. Might fix things, but not a guarantee</li>
+<li>Terminal Output Limit: <code>500</code> - You can increase if your commands output a lot of relevant info that you want to be included in the context, but it will also fill up your context window faster.</li>
+</ul>
+<p>Under "General" Set the following  </p>
+<ul>
+<li>Preferred Language: <code>English</code> (for the sake of the models being trained mostly on English)</li>
+<li><strong><em>!! Allow error and usage reporting !!: Unchecked/Disabled - VERY IMPORTANT IF USING ON PRIVATE REPOS</em></strong></li>
+</ul>
+<p>Once Configured, hit the blue "Done" button in the top right to return to the main interface.</p>
+<h2 id="using-cline">Using Cline<a class="headerlink" href="#using-cline" title="Permanent link">&para;</a></h2>
+<ul>
+<li>There are two main modes Cline operates in: "Plan" and "Act"<ul>
+<li>Use "Plan" first to analyze your codebase and docs within your repo, work with it/iterate to refine the plan to your liking. Tell it to ask you questions in your prompt. Be very specific wherever you can be, you will get better results this way. Give it details about the environment you're working in if it's not documented in a file somewhere (Otherwise, it will typically try and look through your repo to figure out whats installed if a <code>requirements.txt</code> file or something similar exists).</li>
+<li>Use "Act" mode to start actually performic agentic actions. As soon as you toggle the mode switch to "Act", it will start executing the plan. You can always hit "Cancel" between steps and clarify/tell it to fix something if it's getting stuck in a loop, doing something wrong, or otherwise needs some help/is going down the wrong rabbit hole.<ul>
+<li>By default, Cline will ask your permission to do most "unsafe" actions first, like creating/editing a file, installing a package, deleting something, etc. That being said, it uses the LLM itself to determine if the action is "Safe" in the first place, so monitor it and stop it if need be. If you're using tools/mcp servers, you can give it permission to "Auto-Approve" certain tools as it tries to use them. You can also give it permission to Auto-Approve most file Read commands right above the text entry box. You can also auto approve edit commands, but I don't recommend this.</li>
+<li>When editing/creating a file, Cline will give you a side by side diff so you can inspect and edit the changes it's making. It will ask you to save or cancel the changes before it moves on to the next step. If you edit the file or cancel the changes, it will note that as feedback and usually try again taking the feedback into consideration. If you keep rejecting/canceling the changes, it will usually stop acting pretty quickly.</li>
+<li>You can also tell it to ask you questions in "Act" mode, which I've found very useful. The open models aren't great at doing this unprompted, so be sure to tell it to ask you questions in your prompt.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>You can add specific files/folders in your project as context to your prompt by hitting the "@" button under the text entry box. This is useful if you want to point it to some specific files so it doesn't have to try and guess/find the right files. That being said, a file list of the project you're in is included as part of the prompt under the hood, so if your project is structured/named well and according to standard conventions, it's pretty good at finding the right files in my experience. You can also add specific non project files to your prompt by pressing the "+" button that's next to the "@" button (I don't know if it can parse PDFs, though. Image support is model specific and not supported by gpt-oss:120b afaik)</li>
+<li>At the top of the interface, it'll show a progress bar that indicates how much of your "context window" (basically it's memory) has been used. Keep an eye on this, it can fill up fast at times.<ul>
+<li>If you're using a lot of your context window, you can click the little "Compact Prompt" button next to the progress bar at the top of the window showing how much of the context window that's used. This will use the LLM to summarize what it's done so far and reset the context window to just that summary.</li>
+</ul>
+</li>
+<li>Under the context window progress bar, there are little colored squares that indicate the history/chain of actions it's taken in the current task. You can click on the squares to scroll back to a given action, then hover over the dashed line and click "restore" if you want to rollback to the state your codebase and task was in at that point.<ul>
+<li>This uses git under the hood afaik, but sometimes struggles with really large projects. It'll give you a warning when you first start a task if it can't initialize the checkpoints properly, so keep that in mind.</li>
+</ul>
+</li>
+<li>If you're finished doing a specific task, I recommend starting a new chat/task fresh (Click the "+" button in the upper right corner of the pane) so that the LLM doesn't get confused/carry over stuff from the last task accidentally. You do have to tell it about your project and create a new plan from scratch (unless you use some other advanced features, which I can get into later), but its typically better to start clean occasionally in my experience. It has a lot fewer issues if you logically separate what you're doing into different chats/tasks than if you just continuously use the same session.</li>
+<li>Generally, you will have better luck with code quality and the LLM understanding things if your project is structured in a typical/standardized way, whatever makes sense for the project/language you're using. It also will do better with more popular languages (so it does great at Python, but probably not as good at VHDL/Verilog), so keep your expectations in line if you deviate from the norm with your project.</li>
+<li>If you have a lot of good documentation for the libraries your using/your project, I can go over how to use tools to fetch and parse that documentation so the LLM will have a better understanding of what's going on. Let me know if this is the case and I'll write something up/setup a meeting going over how to do this.</li>
+<li><strong>If you have multiple plugins for AI features/assistants in your IDE, I'd recommend disabling all of them except for what you're using at the moment to avoid issues. The plugins are somewhat fragile at the moment.</strong>  </li>
+</ul>
+<h2 id="final-notes">Final Notes<a class="headerlink" href="#final-notes" title="Permanent link">&para;</a></h2>
+<p>Finally, these tools are still very new and very imperfect. This goes not only for the LLMs, but things like the plugins, MCP servers, and general guidance on how to use everything as well. Sadly, you should expect annoyances, incomplete documentation, and rapidly changing functionality at the moment. That being said, if you do run into issues, please open an issue in the relevant location (Cline specifically has a <a href="https://github.com/cline/cline">github repo</a> and a <a href="https://discord.gg/cline">discord</a> where you can raise issues past the <a href="https://docs.cline.bot/">docs</a>)This hopefully should get you started using Cline/LLMs for coding. There's more to go over (MCP Servers/tools, Workflows and rules, advanced prompting, etc.), but I can go over those in the future/separate posts. I'm still somewhat new to this myself, so please share back any tips or features that you've figured out yourself</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
