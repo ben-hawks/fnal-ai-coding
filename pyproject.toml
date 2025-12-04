@@ -1,0 +1,12 @@
+[project]
+name = "fnal-ai-coding"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.11"
+dependencies = [
+    "mkdocs==1.6.1",
+    "mkdocs-material==9.7.0",
+    "mkdocs-mermaid2-plugin==1.2.3",
+    "mkdocs-roamlinks-plugin==0.3.2",
+    "mkdocs-rss-plugin==1.17.7",
+]

@@ -1,4 +1,5 @@
-site_name: obsidian-mkdocs template
+site_name: FNAL AI Coding
+site_url: https://ben-hawks.github.io/fnal-ai-coding/
 
 theme:
     name: 'material'
