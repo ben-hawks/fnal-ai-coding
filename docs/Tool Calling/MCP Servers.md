@@ -28,7 +28,8 @@ As an example, I'll walk through the steps to install [Context7](https://github.
 1. Install  [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm)
 2. Install Node version >= v18.0.0 via NVM using `nvm install 18`
 3. Configure your MCP server json file for your plugin/environment (specifics/location of the file depends on what plugin or other coding tool you're using. Look up the documentation for your plugin/coding tool for more details)
-   ```json
+
+```json
 {
   "mcpServers": {
     "context7": {
