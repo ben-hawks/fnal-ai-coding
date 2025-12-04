@@ -3,7 +3,7 @@ Kilo Code is an open source fork of [[Cline]] and Roo Code. It supports [[Fermil
 ***This page, specifically the "Using Kilo Code" section, is a heavy work in progress. Check back regularly for updates!***
 ## Links & First time Configuration
 
-- [Kilo Code Docs]https://kilo.ai/docs) - 
+- [Kilo Code Docs](https://kilo.ai/docs) - 
     - [Jetbrains Plugin](https://plugins.jetbrains.com/plugin/28350-kilo-code)
     - [VSCode Plugin](https://marketplace.visualstudio.com/items?itemName=kilocode.Kilo-Code)
     - [CLI](https://kilo.ai/docs/cli) (I have not used this myself, so ymmv and you'll have to figure out how to configure it, though I imagine a lot of settings will be similar to what I've put below)
@@ -12,7 +12,8 @@ Kilo Code is an open source fork of [[Cline]] and Roo Code. It supports [[Fermil
 
 Note that it'll ask you to login when you first install the plugin. **This is optional and you can skip it by pressing "Configure API Keys"** (or something similar, I forget exactly what the button says).
 
-You can also access settings at any time by hitting the little cog wheel icon in the upper righthand corner of the Kilo Code pane/tab.  (Third from the right in the image below) ![[Pasted image 20251204152259.png]]
+You can also access settings at any time by hitting the little cog wheel icon in the upper righthand corner of the Kilo Code pane/tab.  (Third from the right in the image below) 
+![[Pasted image 20251204152259.png]]
 
 ***Read through all of the settings explanations here before using the plugin, especially "About Kilo Code Configuration"!!!*** 
 
@@ -86,9 +87,11 @@ Whatever the default language you want Kilo Code to be in. As far as I know, doe
 
 ### MCP Servers
 
-Here you can install and configure [[MCP Servers]] to use with Kilo Code. The plugin provides a nice UI and marketplace, but you can always edit the MCP configuration JSON file manually to install/tweak anything not supported by the UI. You can click the little "here" text to open the JSON MCP config file: ![[Pasted image 20251204151939.png]]
+Here you can install and configure [[MCP Servers]] to use with Kilo Code. The plugin provides a nice UI and marketplace, but you can always edit the MCP configuration JSON file manually to install/tweak anything not supported by the UI. You can click the little "here" text to open the JSON MCP config file: 
+![[Pasted image 20251204151939.png]]
 
-The "Installed" tab lets you enable and disable certain MCP servers if you want to (from your global and project specific MCP servers). Additionally, you can edit the global or project specific MCP config files by scrolling down and hitting the buttons: ![[Pasted image 20251204152030.png]]
+The "Installed" tab lets you enable and disable certain MCP servers if you want to (from your global and project specific MCP servers). Additionally, you can edit the global or project specific MCP config files by scrolling down and hitting the buttons: 
+![[Pasted image 20251204152030.png]]
 
 
 ### "About Kilo Code" Configuration (VERY IMPORTANT)
@@ -102,8 +105,10 @@ You ***MUST*** disable "Allow Error and Usage Reporting" in this tab!! It is ***
 Kilo Code primarily operates in a very "Agentic" manner. This means that, by default, it will perform actions and tasks (using built in tools and/or [[MCP Servers]]) related to the query you ask it instead of just responding with text to a given query. **Be very aware of this before you start using Kilo Code.**
 ### Agentic "Modes"
 In the bottom left corner of the text box, you'll see a dropdown menu to select a "Mode":
+
 ![[Pasted image 20251204155014.png]]
 It expands into this:
+
 ![[Pasted image 20251204152654.png]]
 Kilo code supports multiple "Modes", where each uses a different system prompt to perform various specific tasks. In general, I recommend starting with "Orchestrator" mode, which will determine subtasks and delegate them to the relevant modes as required to complete your request. Each mode is somewhat self explanatory, and you can view the prompt that each is using in **Settings -> Prompts**. 
 
@@ -111,26 +116,33 @@ Additionally, you can create new/custom modes by hitting the "Edit..." button, i
 
 ### Selecting a Model/Provider
 If you have multiple models, or "Providers", configured, you can select which one you are currently using via the dropdown with the name you gave the provider in the left corner of the text entry box:
+
 ![[Pasted image 20251204154950.png]]
 ### Additional Context (Attaching Files)
 If you want to specifically reference a given file ***in your project***, you can do so by attaching it to your query via the paperclip icon in the lower right of the text entry box: 
+
 ![[Pasted image 20251204154921.png]]
+
 As far as I know, this does not automatically ingest and convert documents (such as PDFs), but is meant for text/code files exclusively.  
 
 By default, Kilo Code will attempt to discover and include any relevant files in your project when queried by the LLM to do so. This is just a way to clarify what file to use specifically if ambiguous and/or improve results quality. 
 ### Codebase Indexing
 
+
 ![[Pasted image 20251204154903.png]]
+
 This is an advanced feature that you can enable to improve result quality when working with a specific codebase. It requires that you have a [Qdrant](https://qdrant.tech/) vector database setup somewhere to hold all of the indexed code, and an Embedding Model provider setup somewhere to embed/index the code. This is an advanced feature, if you're interested in using it, contact Burt Holzman about setting up/using a Qdrant and Embedding Model endpoint.  
 
 If you're using `nomic-embed-text:latest` as your embedding model, you must set the "Model Dimension" to `768`.
 
 ### "Enhance Prompt with Additional Context"
 ![[Pasted image 20251204154853.png]]
+
 The 'Enhance Prompt' button helps improve your prompt by providing additional context, clarification, or rephrasing. Try typing a prompt in the text box and clicking the button to see how it works.
 
 ### Kilo Code Rules & Workflows
 ![[Pasted image 20251204155055.png]]
+
 Rules allow you to provide Kilo Code with instructions it should follow in all modes and for all prompts. They are a persistent way to include context and preferences for all conversations in your workspace or globally. [Docs](https://kilocode.ai/docs/advanced-usage/custom-rules)
 
 ## General Tips & Tricks
